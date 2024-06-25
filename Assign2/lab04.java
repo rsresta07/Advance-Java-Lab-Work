@@ -43,15 +43,16 @@ public class lab04 {
         // Making the last item selected at first
         combo.setSelectedIndex(combo.getItemCount() - 1);
 
+        constr.fill = GridBagConstraints.HORIZONTAL;
         // Adding components to the main panel using GridBagConstraints
         constr.gridx = 0;
         constr.gridy = 0;
-        constr.insets = new Insets(0, 0, 10, 0);
+        constr.insets = new Insets(0, 0, 30, 0);
         mainPanel.add(lb1, constr);
 
         constr.gridx = 1;
         constr.gridy = 0;
-        constr.insets = new Insets(0, 0, 10, 0);
+        // constr.insets = new Insets(0, 0, 10, 0);
         mainPanel.add(combo, constr);
 
         constr.gridx = 0;
