@@ -12,11 +12,11 @@ public class lab05 {
     public static void main(String[] args) {
         JFrame frame = new JFrame("List Demo");
         JPanel mainPanel = new JPanel();
-        
+
         JLabel lb1 = new JLabel("Choose the planet ");
 
-        String planetName[] = { "Mercury", "Venus", "Earth", "Mars", "Jupiter", "Saturn", "Neptune", "Uranus",
-                "Pluto" };
+        String planetName[] = { "Mercury", "Venus", "Earth", "Mars", "Jupiter", "Saturn", "Neptune", 
+                "Uranus", "Pluto" };
         JList<String> list = new JList<String>(planetName);
         JScrollPane scrollPane = new JScrollPane(list); // Wrap the JList in a JScrollPane
 
