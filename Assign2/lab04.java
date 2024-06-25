@@ -43,6 +43,7 @@ public class lab04 {
         // Making the last item selected at first
         combo.setSelectedIndex(combo.getItemCount() - 1);
 
+        // this aligns the count adn selected choose to left
         constr.fill = GridBagConstraints.HORIZONTAL;
         // Adding components to the main panel using GridBagConstraints
         constr.gridx = 0;
