@@ -16,7 +16,7 @@ public class lab09 {
     public static void main(String[] args) {
         JFrame frame = new JFrame("Java TextArea");
         JPanel mainPanel = new JPanel(new GridBagLayout());
-        GridBagConstraints constraints = new GridBagConstraints();
+        GridBagConstraints constr = new GridBagConstraints();
 
         JLabel controlAction = new JLabel("Control in action: TextArea");
         JLabel comment = new JLabel("Comments: ");
@@ -30,28 +30,27 @@ public class lab09 {
         scrollPane.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
         scrollPane.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_ALWAYS);
 
-        constraints.gridx = 0;
-        constraints.gridy = 0;
-        constraints.insets = new Insets(0, 0, 50, 0);
-        constraints.gridwidth = 3; // This will span the label across all three columns
-        constraints.anchor = GridBagConstraints.CENTER;
-        // constraints.fill = GridBagConstraints.HORIZONTAL;
-        mainPanel.add(controlAction,constraints);
+        constr.gridx = 0;
+        constr.gridy = 0;
+        constr.insets = new Insets(0, 0, 50, 0);
+        constr.gridwidth = 3; // This will span the label across all three columns
+        constr.anchor = GridBagConstraints.CENTER;
+        mainPanel.add(controlAction,constr);
 
-        constraints.gridx = 0;
-        constraints.gridy = 1;
-        constraints.gridwidth = 1; // Reset the gridwidth to its default value
-        constraints.insets = new Insets(0,0,0,10);
-        mainPanel.add(comment,constraints);
+        constr.gridx = 0;
+        constr.gridy = 1;
+        constr.gridwidth = 1; // Reset the gridwidth to its default value
+        constr.insets = new Insets(0,0,0,10);
+        mainPanel.add(comment,constr);
 
-        constraints.gridx = 1;
-        constraints.gridy = 1;
-        constraints.insets = new Insets(0,0,0,10);
-        mainPanel.add(scrollPane,constraints);
+        constr.gridx = 1;
+        constr.gridy = 1;
+        constr.insets = new Insets(0,0,0,10);
+        mainPanel.add(scrollPane,constr);
 
-        constraints.gridx = 2;
-        constraints.gridy = 1;
-        mainPanel.add(button,constraints);
+        constr.gridx = 2;
+        constr.gridy = 1;
+        mainPanel.add(button,constr);
 
         frame.add(mainPanel);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
