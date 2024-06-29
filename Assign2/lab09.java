@@ -35,22 +35,21 @@ public class lab09 {
         constr.insets = new Insets(0, 0, 50, 0);
         constr.gridwidth = 3; // This will span the label across all three columns
         constr.anchor = GridBagConstraints.CENTER;
-        mainPanel.add(controlAction,constr);
+        mainPanel.add(controlAction, constr);
 
         constr.gridx = 0;
         constr.gridy = 1;
         constr.gridwidth = 1; // Reset the gridwidth to its default value
-        constr.insets = new Insets(0,0,0,10);
-        mainPanel.add(comment,constr);
+        constr.insets = new Insets(0, 0, 0, 10);
+        mainPanel.add(comment, constr);
 
         constr.gridx = 1;
         constr.gridy = 1;
-        constr.insets = new Insets(0,0,0,10);
-        mainPanel.add(scrollPane,constr);
+        mainPanel.add(scrollPane, constr);
 
         constr.gridx = 2;
         constr.gridy = 1;
-        mainPanel.add(button,constr);
+        mainPanel.add(button, constr);
 
         frame.add(mainPanel);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);

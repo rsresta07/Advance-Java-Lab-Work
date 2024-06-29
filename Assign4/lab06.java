@@ -1,3 +1,6 @@
+// TODO: use GridLayout to create the layout not GridBagLayout
+
+
 package Assign4;
 
 import java.awt.GridBagConstraints;

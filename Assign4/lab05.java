@@ -1,20 +1,20 @@
 package Assign4;
 
-
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
-import javax.swing.JTextField;
+import javax.swing.*;
 
-import java.awt.FlowLayout;
+import java.awt.GridBagConstraints;
+import java.awt.GridBagLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 public class lab05 {
     public static void main(String[] args) {
         JFrame frame = new JFrame("JTextField");
-        JPanel mainPanel = new JPanel(new FlowLayout());
+        JPanel mainPanel = new JPanel(new GridBagLayout());
 
         JLabel label1 = new JLabel("Find the largest One");
         JLabel num1 = new JLabel("First Number");
@@ -27,13 +27,40 @@ public class lab05 {
         LargestButtonListener listener = new LargestButtonListener(numValue1, numValue2, result);
         check.addActionListener(listener);
 
-        mainPanel.add(label1);
-        mainPanel.add(num1);
-        mainPanel.add(numValue1);
-        mainPanel.add(num2);
-        mainPanel.add(numValue2);
-        mainPanel.add(check);
-        mainPanel.add(result);
+        GridBagConstraints gbc = new GridBagConstraints();
+        label1.setHorizontalAlignment(SwingConstants.CENTER);
+        result.setHorizontalAlignment(SwingConstants.CENTER);
+
+        gbc.gridx = 0;
+        gbc.gridy = 0;
+        gbc.gridwidth = 2;
+        mainPanel.add(label1, gbc);
+
+        gbc.gridx = 0;
+        gbc.gridy = 1;
+        gbc.gridwidth = 1;
+        mainPanel.add(num1, gbc);
+
+        gbc.gridx = 1;
+        gbc.gridy = 1;
+        mainPanel.add(numValue1, gbc);
+
+        gbc.gridx = 0;
+        gbc.gridy = 2;
+        mainPanel.add(num2, gbc);
+
+        gbc.gridx = 1;
+        gbc.gridy = 2;
+        mainPanel.add(numValue2, gbc);
+
+        gbc.gridx = 0;
+        gbc.gridy = 3;
+        mainPanel.add(check, gbc);
+
+        gbc.gridx = 0;
+        gbc.gridy = 4;
+        gbc.gridwidth = 2;
+        mainPanel.add(result, gbc);
 
         frame.add(mainPanel);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
