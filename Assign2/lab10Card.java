@@ -3,8 +3,8 @@
 package Assign2;
 
 import java.awt.*;
-import javax.swing.*;
 import java.awt.event.*;
+import javax.swing.*;
 
 public class lab10Card extends JFrame implements ActionListener {
     CardLayout crd;
@@ -15,13 +15,10 @@ public class lab10Card extends JFrame implements ActionListener {
     // constructor of the class
     lab10Card() {
         cPane = getContentPane();
-        // default constructor used
-        // therefore, components will
-        // cover the whole area
+        // default constructor used therefore, components will cover the whole area
         crd = new CardLayout();
         cPane.setLayout(crd);
-        
-        // creating the buttons
+
         btn1 = new JButton("Apple");
         btn2 = new JButton("Boy");
         btn3 = new JButton("Cat");
@@ -39,17 +36,13 @@ public class lab10Card extends JFrame implements ActionListener {
 
     public void actionPerformed(ActionEvent e) {
         // Upon clicking the button, the next card of the container is shown
-        // after the last card, again, the first card of the container is shown upon
-        // clicking
+        // after last card, the first card of the container is shown upon clicking
         crd.next(cPane);
     }
 
-    // main method
     public static void main(String args[]) {
-        // creating an object of the class CardLayoutExample1
         lab10Card crdl = new lab10Card();
 
-        // size is 300 * 300
         crdl.setSize(300, 300);
         crdl.setVisible(true);
         crdl.setDefaultCloseOperation(EXIT_ON_CLOSE);

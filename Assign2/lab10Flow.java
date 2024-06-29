@@ -10,7 +10,7 @@ public class lab10Flow {
         JFrame frame = new JFrame("FlowLayout Demo");
         frame.setLayout(new FlowLayout());
 
-        for (int i = 1; i <= 5; i++) {
+        for (int i = 1; i <= 3; i++) {
             frame.add(new JButton("Button " + i));
         }
 
