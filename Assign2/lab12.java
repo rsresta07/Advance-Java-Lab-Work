@@ -1,7 +1,9 @@
 package Assign2;
 
-import javax.swing.*;
 import java.io.File;
+
+import javax.swing.JFileChooser;
+import javax.swing.JOptionPane;
 
 public class lab12 {
     public static void main(String[] args) {
