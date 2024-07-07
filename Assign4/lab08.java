@@ -1,9 +1,6 @@
 package Assign4;
 
 import java.awt.GridLayout;
-import java.awt.List;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.util.ArrayList;
 
 import javax.swing.JButton;
@@ -15,56 +12,50 @@ import javax.swing.SwingConstants;
 
 public class lab08 {
     public static void main(String[] args) {
-        JFrame frame = new JFrame("Food Order");
+        JFrame frame = new JFrame("Rameshwor");
         JPanel mainPanel = new JPanel(new GridLayout(0, 1));
-        JPanel optionPanel = new JPanel(new GridLayout(3, 2));
+        JPanel panel = new JPanel(new GridLayout(3, 2));
 
-        JLabel lb1 = new JLabel("Food Ordering System");
+        JLabel label = new JLabel("Food Ordering System");
 
-        ArrayList<JCheckBox> check = new ArrayList<JCheckBox>();
+        ArrayList<JCheckBox> check = new ArrayList<>();
+        check.add(new JCheckBox("Momo"));
+        check.add(new JCheckBox("Pizza"));
         check.add(new JCheckBox("Chowmein"));
-        check.add(new JCheckBox("momo"));
-        check.add(new JCheckBox("pizza"));
-        check.add(new JCheckBox("fryRice"));
+        check.add(new JCheckBox("Fry Rice"));
 
-        JButton submit = new JButton("Submit");
-        JLabel order = new JLabel("order");
+        JButton submitBtn = new JButton("Submit");
+        JLabel order = new JLabel();
 
-        lb1.setHorizontalAlignment(SwingConstants.CENTER);
-        order.setHorizontalAlignment(SwingConstants.CENTER);
+        submitBtn.addActionListener(e -> {
+            int count = 0;
+            String ans = "";
 
-        submit.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent e) {
-                int count = 0;
-                String ans = null;
-
-                for (JCheckBox jCheckBox : check) {
-                    if (jCheckBox.isSelected()) {
-                        count++;
-                        ans = jCheckBox.getText() + " ";
-                    }
+            for (JCheckBox jCheckBox : check) {
+                if (jCheckBox.isSelected()) {
+                    count++;
+                    ans += jCheckBox.getText() + " ";
                 }
-
-                order.setText(String.format("You have selected %d items they are %s", count, ans));
-
             }
+            order.setText(String.format("You have selected %d items they are %s", count, ans));
         });
 
-        mainPanel.add(lb1);
-        mainPanel.add(optionPanel);
+        label.setHorizontalAlignment(SwingConstants.CENTER);
+        order.setHorizontalAlignment(SwingConstants.CENTER);
+        
+        panel.add(check.get(0));
+        panel.add(check.get(1));
+        panel.add(check.get(2));
+        panel.add(check.get(3));
+        panel.add(submitBtn);
+        
+        mainPanel.add(label);
+        mainPanel.add(panel);
         mainPanel.add(order);
-
-        optionPanel.add(check.get(0));
-        optionPanel.add(check.get(1));
-        optionPanel.add(check.get(2));
-        optionPanel.add(check.get(3));
-
-        optionPanel.add(submit);
-
+        
         frame.add(mainPanel);
+        frame.setSize(450, 300);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        frame.setSize(350, 350);
         frame.setVisible(true);
     }
-
 }
