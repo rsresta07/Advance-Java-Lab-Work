@@ -13,7 +13,7 @@ public class lab09 {
         JFrame frame = new JFrame("Key Event");
         JPanel mainPanel = new JPanel();
 
-        JLabel lb1 = new JLabel("enter text");
+        JLabel lb1 = new JLabel("Enter text");
         JTextField text = new JTextField(10);
         JLabel lb2 = new JLabel();
 

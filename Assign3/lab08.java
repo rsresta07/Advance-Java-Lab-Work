@@ -19,9 +19,9 @@ public class lab08 {
         JPanel mainPanel = new JPanel(new GridBagLayout());
         GridBagConstraints constraints = new GridBagConstraints();
 
-        JLabel dollar = new JLabel("Dollar");
-        JLabel nepalese = new JLabel("Nepalese");
-        JLabel euro = new JLabel("Euro");
+        JLabel dollar = new JLabel("Dollar ");
+        JLabel nepalese = new JLabel("Nepalese ");
+        JLabel euro = new JLabel("Euro ");
 
         JTextField dollarField = new JTextField(10);
         JTextField nepaleseField = new JTextField(10);

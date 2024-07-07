@@ -12,7 +12,7 @@ public class lab12 {
                 JOptionPane.YES_NO_OPTION);
         if (choice == JOptionPane.YES_OPTION) {
             System.out.println("User chose Yes");
-        } else if (choice == JOptionPane.NO_OPTION) {
+        } else {
             System.out.println("User chose No");
         }
 
@@ -22,7 +22,7 @@ public class lab12 {
         if (returnValue == JFileChooser.APPROVE_OPTION) {
             File selectedFile = fileChooser.getSelectedFile();
             System.out.println("Selected file: " + selectedFile.getAbsolutePath());
-        } else if (returnValue == JFileChooser.CANCEL_OPTION) {
+        } else {
             System.out.println("User cancelled the file selection");
         }
     }
