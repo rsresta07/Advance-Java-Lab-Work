@@ -36,7 +36,7 @@ public class lab10 {
         addToPanel(mainPanel, listener, 0, 0, 40);
         addToPanel(mainPanel, welcomeButton, 0, 1, 40);
         addToPanel(mainPanel, counter, 0, 2, 0);
-        addToPanel(mainPanel, position, 0, 3, 0);
+        addToPanel(mainPanel, position, 0, 3,0);
 
         frame.add(mainPanel);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
