@@ -18,8 +18,8 @@ public class lab14 {
         JMenu radioMenu = new JMenu("Radio Menu");
         JMenu checkMenu = new JMenu("Check Menu");
 
-        normalMenu.add(new JMenuItem("New file", new ImageIcon("labAssignment4/new.png")));
-        normalMenu.add(new JMenuItem("Open file", new ImageIcon("labAssignment4/open.png")));
+        normalMenu.add(new JMenuItem("New file", new ImageIcon("img/new.png")));
+        normalMenu.add(new JMenuItem("Open file", new ImageIcon("img/open.png")));
 
         ButtonGroup btnGroup = new ButtonGroup();
         JRadioButton radioBtn1 = new JRadioButton("First Radio Option");
