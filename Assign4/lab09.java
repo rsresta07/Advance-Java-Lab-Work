@@ -1,7 +1,6 @@
 package Assign4;
 
 import java.awt.GridLayout;
-import java.util.ArrayList;
 
 import javax.swing.ButtonGroup;
 import javax.swing.JButton;
@@ -17,48 +16,43 @@ public class lab09 {
         JPanel mainPanel = new JPanel(new GridLayout(0, 1));
         JPanel panel = new JPanel(new GridLayout(3, 2));
 
-        JLabel payLabel = new JLabel("Choose your Payment");
-        JLabel resultLabel = new JLabel();;
+        JLabel payLabel = new JLabel("Choose your Payment", SwingConstants.CENTER);
+        JLabel resultLabel = new JLabel("", SwingConstants.CENTER);
 
-        ArrayList<JRadioButton> btn = new ArrayList<>();
-        btn.add(new JRadioButton("Credit Card"));
-        btn.add(new JRadioButton("Wallet"));
-        btn.add(new JRadioButton("Bank Transfer"));
-        btn.add(new JRadioButton("Cash on Delivery"));
-
+        // Create an array of payment options
+        String[] options = { "Credit Card", "Wallet", "Bank Transfer", "Cash on Delivery" };
+        // Create a new ButtonGroup for the radio buttons
         ButtonGroup btnGroup = new ButtonGroup();
-        btnGroup.add(btn.get(0));
-        btnGroup.add(btn.get(1));
-        btnGroup.add(btn.get(2));
-        btnGroup.add(btn.get(3));
+        // Create an array of JRadioButton for the payment options
+        JRadioButton[] btns = new JRadioButton[options.length];
 
+        // Add the payment options to the panel and the ButtonGroup
+        for (int i = 0; i < options.length; i++) {
+            btns[i] = new JRadioButton(options[i]);
+            btnGroup.add(btns[i]);
+            panel.add(btns[i]);
+        }
+
+        /*
+         * Create a new JButton with the label "Ok"
+         * Add an action listener to the "Ok" button to display the selected payment
+         * option
+         */
         JButton okBtn = new JButton("Ok");
-
         okBtn.addActionListener(e -> {
-            String ans = "";
-
-            for (JRadioButton jRadioButton : btn) {
-                if (jRadioButton.isSelected()) {
-                    ans = jRadioButton.getText();
+            for (JRadioButton btn : btns) {
+                if (btn.isSelected()) {
+                    resultLabel.setText("You have selected " + btn.getText());
+                    break;
                 }
             }
-            resultLabel.setText(String.format("You have selected %s", ans));
         });
 
-        payLabel.setHorizontalAlignment(SwingConstants.CENTER);
-        resultLabel.setHorizontalAlignment(SwingConstants.CENTER);
-        
-        mainPanel.add(payLabel);
-
-        panel.add(btn.get(0));
-        panel.add(btn.get(1));
-        panel.add(btn.get(2));
-        panel.add(btn.get(3));
         panel.add(okBtn);
-
+        mainPanel.add(payLabel);
         mainPanel.add(panel);
         mainPanel.add(resultLabel);
-        
+
         frame.add(mainPanel);
         frame.setSize(300, 300);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);

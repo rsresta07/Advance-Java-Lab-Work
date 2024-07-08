@@ -17,37 +17,30 @@ public class lab10 {
 
         JTabbedPane tabs = new JTabbedPane();
 
+        // Dashboard panel
         JPanel dashPanel = new JPanel();
+        dashPanel.add(new JLabel("Welcome to IOC"));
+
+        // Courses panel
         JPanel coursePanel = new JPanel(new GridLayout(0, 1));
+        String[] courses = { "C", "C++", "Java", "PHP" };
+        coursePanel.add(new JLabel("Select the course", SwingConstants.CENTER));
+        for (String course : courses) {
+            coursePanel.add(new JCheckBox(course));
+        }
+        coursePanel.add(new JButton("Submit"));
+
+        // Comment panel
         JPanel commentPanel = new JPanel();
-        
-        JLabel dashLabel = new JLabel("Welcome to 10C");
-        dashPanel.add(dashLabel);
+        commentPanel.add(new JLabel("Leave your Comment"));
+        commentPanel.add(new JTextArea(20, 50));
 
-        JLabel courseLabel = new JLabel("Select the course");
-        courseLabel.setHorizontalAlignment(SwingConstants.CENTER);
-        JCheckBox cBox1 = new JCheckBox("C");
-        JCheckBox cBox2 = new JCheckBox("C++");
-        JCheckBox cBox3 = new JCheckBox("Java");
-        JCheckBox cBox4 = new JCheckBox("PHP");
-        JButton submitBtn = new JButton("Submit");
-
-        coursePanel.add(courseLabel);
-        coursePanel.add(cBox1);
-        coursePanel.add(cBox2);
-        coursePanel.add(cBox3);
-        coursePanel.add(cBox4);
-        coursePanel.add(submitBtn);
-
-        JLabel commentLabel = new JLabel("Leave your Comment");
-        JTextArea cmtArea = new JTextArea(20, 50);
-        commentPanel.add(commentLabel);
-        commentPanel.add(cmtArea);
-
+        // Adding tabs
         tabs.addTab("Dashboard", dashPanel);
         tabs.addTab("Courses", coursePanel);
         tabs.addTab("Comment", commentPanel);
-        
+
+        // Frame settings
         frame.add(tabs);
         frame.setSize(600, 500);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);

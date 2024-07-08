@@ -11,7 +11,7 @@ import javax.swing.JTextField;
 
 public class lab04 {
     public static void main(String[] args){
-        JFrame frame = new JFrame();
+        JFrame frame = new JFrame("Rameshwor");
         JPanel mainPanel = new JPanel();
         
         JTextField tf1 = new JTextField("Hello",10);

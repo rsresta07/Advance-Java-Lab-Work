@@ -18,6 +18,7 @@ public class lab09 {
         JLabel lb2 = new JLabel();
 
         text.addKeyListener(new KeyAdapter() {
+            @Override
             public void keyPressed(KeyEvent e) {
                 lb2.setText(text.getText());
             }

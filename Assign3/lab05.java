@@ -14,7 +14,7 @@ import javax.swing.JTextField;
 
 public class lab05 {
     public static void main(String[] args) {
-        JFrame frame = new JFrame();
+        JFrame frame = new JFrame("Rameshwor");
         JPanel mainPanel = new JPanel(new GridBagLayout());
         GridBagConstraints constraints = new GridBagConstraints();
 

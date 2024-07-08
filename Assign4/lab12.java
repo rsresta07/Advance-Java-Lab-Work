@@ -19,136 +19,91 @@ public class lab12 {
     public static void main(String[] args) {
         JFrame frame = new JFrame("Rameshwor");
         JPanel mainPanel = new JPanel(new GridBagLayout());
-        JPanel btnPanel = new JPanel();
-
-        JLabel nameLabel = new JLabel("Name:");
-        JLabel addressLabel = new JLabel("Address:");
-        JLabel genderLabel = new JLabel("Gender:");
-        JLabel programLabel = new JLabel("Program:");
-        JLabel phoneLabel = new JLabel("Phone:");
-        JLabel emailLabel = new JLabel("Email:");
+        GridBagConstraints gbc = new GridBagConstraints();
+        gbc.insets = new Insets(5, 5, 5, 5);
 
         JTextField nameField = new JTextField(20);
         JTextField addressField = new JTextField(20);
         JTextField phoneField = new JTextField(20);
         JTextField emailField = new JTextField(20);
 
-        JRadioButton jRadioBtn1 = new JRadioButton("male");
-        JRadioButton jRadioBtn2 = new JRadioButton("female");
-        ButtonGroup btnGroup = new ButtonGroup();
-        
-        btnGroup.add(jRadioBtn1);
-        btnGroup.add(jRadioBtn2);
+        JRadioButton maleBtn = new JRadioButton("male");
+        JRadioButton femaleBtn = new JRadioButton("female");
+        ButtonGroup genderGroup = new ButtonGroup();
+        genderGroup.add(maleBtn);
+        genderGroup.add(femaleBtn);
+        JPanel genderPanel = new JPanel();
+        genderPanel.add(maleBtn);
+        genderPanel.add(femaleBtn);
 
-        String[] options = {"BIM", "BCA", "BBM", "CSIT", "BBA", "BHM"};
-        JComboBox<String> comboBox = new JComboBox<>(options);
+        String[] programs = { "BIM", "BCA", "BBM", "CSIT", "BBA", "BHM" };
+        JComboBox<String> programBox = new JComboBox<>(programs);
+        programBox.setPreferredSize(
+                new Dimension(nameField.getPreferredSize().width, programBox.getPreferredSize().height));
 
         JButton addBtn = new JButton("Add");
         JButton resetBtn = new JButton("Reset");
         JButton cancelBtn = new JButton("Cancel");
-
+        JPanel btnPanel = new JPanel();
         btnPanel.add(addBtn);
         btnPanel.add(resetBtn);
         btnPanel.add(cancelBtn);
 
         addBtn.addActionListener(e -> {
-            String name = nameField.getText();
-            String address = addressField.getText();
-            String gender = jRadioBtn1.isSelected() ? "male" : (jRadioBtn2.isSelected() ? "female" : "invalid");
-            String program = (String) comboBox.getSelectedItem();
-            String phone = phoneField.getText();
-            String email = emailField.getText();
-
+            String gender = maleBtn.isSelected() ? "male" : (femaleBtn.isSelected() ? "female" : "invalid");
             String message = String.format(
-                "Name: %s \nAddress: %s \nGender: %s \nProgram: %s \nPhone: %s \nEmail: %s", 
-                name, address, gender, program, phone, email
-            );
-
+                    "Name: %s\nAddress: %s\nGender: %s\nProgram: %s\nPhone: %s\nEmail: %s",
+                    nameField.getText(), addressField.getText(), gender, programBox.getSelectedItem(),
+                    phoneField.getText(), emailField.getText());
             JOptionPane.showMessageDialog(frame, message, "User Information", JOptionPane.INFORMATION_MESSAGE);
-
         });
 
         resetBtn.addActionListener(e -> {
             nameField.setText(null);
             addressField.setText(null);
-            btnGroup.clearSelection();
-            comboBox.setSelectedIndex(0);
             phoneField.setText(null);
             emailField.setText(null);
+            genderGroup.clearSelection();
+            programBox.setSelectedIndex(0);
         });
 
-        cancelBtn.addActionListener(e -> {
-            System.exit(0);
-        });
+        cancelBtn.addActionListener(e -> System.exit(0));
 
-        GridBagConstraints gbc = new GridBagConstraints();
-        gbc.insets = new Insets(0, 0, 0, 0);
-        
         gbc.gridx = 0;
         gbc.gridy = 0;
         gbc.anchor = GridBagConstraints.WEST;
-        mainPanel.add(nameLabel, gbc);
-
+        mainPanel.add(new JLabel("Name:"), gbc);
         gbc.gridx = 1;
-        gbc.insets = new Insets(0, 200, 0, 0);
-        gbc.anchor = GridBagConstraints.EAST;
         mainPanel.add(nameField, gbc);
 
         gbc.gridx = 0;
         gbc.gridy = 1;
-        gbc.insets = new Insets(0, 0, 0, 0);
-        gbc.anchor = GridBagConstraints.WEST;
-        mainPanel.add(addressLabel, gbc);
-
+        mainPanel.add(new JLabel("Address:"), gbc);
         gbc.gridx = 1;
-        gbc.anchor = GridBagConstraints.EAST;
         mainPanel.add(addressField, gbc);
 
         gbc.gridx = 0;
         gbc.gridy = 2;
-        gbc.insets = new Insets(0, 0, 0, 0);
-        gbc.anchor = GridBagConstraints.WEST;
-        mainPanel.add(genderLabel, gbc);
-
-        JPanel genderPanel = new JPanel();
-        genderPanel.add(jRadioBtn1);
-        genderPanel.add(jRadioBtn2);
-        
+        mainPanel.add(new JLabel("Gender:"), gbc);
         gbc.gridx = 1;
-        gbc.insets = new Insets(0, 200, 0, 0);
-        gbc.anchor = GridBagConstraints.CENTER;
         mainPanel.add(genderPanel, gbc);
 
         gbc.gridx = 0;
         gbc.gridy = 3;
-        gbc.gridwidth = 1;
-        gbc.insets = new Insets(0, 0, 0, 0);
-        gbc.anchor = GridBagConstraints.WEST;
-        mainPanel.add(programLabel, gbc);
-
+        mainPanel.add(new JLabel("Program:"), gbc);
         gbc.gridx = 1;
-        gbc.anchor = GridBagConstraints.EAST;
-        comboBox.setPreferredSize(new Dimension(nameField.getPreferredSize().width, comboBox.getPreferredSize().height));
-        mainPanel.add(comboBox, gbc);
+        mainPanel.add(programBox, gbc);
 
         gbc.gridx = 0;
         gbc.gridy = 4;
-        gbc.insets = new Insets(0, 0, 0, 0);
-        gbc.anchor = GridBagConstraints.WEST;
-        mainPanel.add(phoneLabel, gbc);
-
+        mainPanel.add(new JLabel("Phone:"), gbc);
         gbc.gridx = 1;
-        gbc.anchor = GridBagConstraints.EAST;
         mainPanel.add(phoneField, gbc);
 
         gbc.gridx = 0;
         gbc.gridy = 5;
-        gbc.insets = new Insets(0, 0, 0, 0);
-        gbc.anchor = GridBagConstraints.WEST;
-        mainPanel.add(emailLabel, gbc);
-
+        mainPanel.add(new JLabel("Email:"), gbc);
         gbc.gridx = 1;
-        gbc.anchor = GridBagConstraints.EAST;
         mainPanel.add(emailField, gbc);
 
         gbc.gridx = 0;
@@ -156,7 +111,7 @@ public class lab12 {
         gbc.gridwidth = 2;
         gbc.anchor = GridBagConstraints.CENTER;
         mainPanel.add(btnPanel, gbc);
-        
+
         frame.add(mainPanel);
         frame.pack();
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);

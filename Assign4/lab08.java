@@ -1,7 +1,6 @@
 package Assign4;
 
 import java.awt.GridLayout;
-import java.util.ArrayList;
 
 import javax.swing.JButton;
 import javax.swing.JCheckBox;
@@ -16,43 +15,35 @@ public class lab08 {
         JPanel mainPanel = new JPanel(new GridLayout(0, 1));
         JPanel panel = new JPanel(new GridLayout(3, 2));
 
-        JLabel label = new JLabel("Food Ordering System");
+        JLabel label = new JLabel("Food Ordering System", SwingConstants.CENTER);
+        JLabel order = new JLabel("", SwingConstants.CENTER);
 
-        ArrayList<JCheckBox> check = new ArrayList<>();
-        check.add(new JCheckBox("Momo"));
-        check.add(new JCheckBox("Pizza"));
-        check.add(new JCheckBox("Chowmein"));
-        check.add(new JCheckBox("Fry Rice"));
+        String[] items = { "Momo", "Pizza", "Chowmein", "Fry Rice" };
+        JCheckBox[] checkboxes = new JCheckBox[items.length];
+        for (int i = 0; i < items.length; i++) {
+            checkboxes[i] = new JCheckBox(items[i]);
+            panel.add(checkboxes[i]);
+        }
 
         JButton submitBtn = new JButton("Submit");
-        JLabel order = new JLabel();
-
         submitBtn.addActionListener(e -> {
             int count = 0;
-            String ans = "";
-
-            for (JCheckBox jCheckBox : check) {
-                if (jCheckBox.isSelected()) {
+            StringBuilder selectedItems = new StringBuilder();
+            for (JCheckBox checkbox : checkboxes) {
+                if (checkbox.isSelected()) {
                     count++;
-                    ans += jCheckBox.getText() + " ";
+                    selectedItems.append(checkbox.getText()).append(" ");
                 }
             }
-            order.setText(String.format("You have selected %d items they are %s", count, ans));
+            order.setText(String.format("You have selected %d items. They are %s", count, selectedItems.toString()));
         });
 
-        label.setHorizontalAlignment(SwingConstants.CENTER);
-        order.setHorizontalAlignment(SwingConstants.CENTER);
-        
-        panel.add(check.get(0));
-        panel.add(check.get(1));
-        panel.add(check.get(2));
-        panel.add(check.get(3));
         panel.add(submitBtn);
-        
+
         mainPanel.add(label);
         mainPanel.add(panel);
         mainPanel.add(order);
-        
+
         frame.add(mainPanel);
         frame.setSize(450, 300);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);

@@ -1,10 +1,9 @@
 package Assign3;
 
+import java.awt.Component;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.Insets;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseMotionAdapter;
 
@@ -14,25 +13,18 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 public class lab10 {
-    private static int count = 0; // Use int instead of double for counting clicks
+    private static int clickCount = 0;
 
     public static void main(String[] args) {
         JFrame frame = new JFrame();
         JPanel mainPanel = new JPanel(new GridBagLayout());
-        GridBagConstraints constraints = new GridBagConstraints();
 
         JLabel listener = new JLabel("Mouse Listener");
         JButton welcomeButton = new JButton("Welcome to MouseEventListener");
         JLabel counter = new JLabel("Mouse Clicked: 0");
         JLabel position = new JLabel("(0,0)");
 
-        welcomeButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                count++; // Increment the click count
-                counter.setText("Mouse Clicked: " + count); // Update the label text
-            }
-        });
+        welcomeButton.addActionListener(e -> counter.setText("Mouse Clicked: " + (++clickCount)));
 
         mainPanel.addMouseMotionListener(new MouseMotionAdapter() {
             @Override
@@ -41,27 +33,22 @@ public class lab10 {
             }
         });
 
-        constraints.gridx = 0;
-        constraints.gridy = 0;
-        constraints.insets = new Insets(0, 0, 40, 0);
-        mainPanel.add(listener, constraints);
-
-        constraints.gridx = 0;
-        constraints.gridy = 1;
-        constraints.insets = new Insets(0, 0, 40, 0);
-        mainPanel.add(welcomeButton, constraints);
-
-        constraints.gridx = 0;
-        constraints.gridy = 2;
-        mainPanel.add(counter, constraints);
-
-        constraints.gridx = 0;
-        constraints.gridy = 3;
-        mainPanel.add(position, constraints);
+        addToPanel(mainPanel, listener, 0, 0, 40);
+        addToPanel(mainPanel, welcomeButton, 0, 1, 40);
+        addToPanel(mainPanel, counter, 0, 2, 0);
+        addToPanel(mainPanel, position, 0, 3, 0);
 
         frame.add(mainPanel);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        frame.setSize(600, 600);
+        frame.setSize(500, 500);
         frame.setVisible(true);
+    }
+
+    private static void addToPanel(JPanel panel, Component component, int x, int y, int bottomInset) {
+        GridBagConstraints constraints = new GridBagConstraints();
+        constraints.gridx = x;
+        constraints.gridy = y;
+        constraints.insets = new Insets(0, 0, bottomInset, 0);
+        panel.add(component, constraints);
     }
 }

@@ -8,7 +8,6 @@ import javax.swing.JTextField;
 
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 
 public class lab02 {
     public static void main(String[] args) {
@@ -23,8 +22,14 @@ public class lab02 {
         reverseValue.setEditable(false);
         JButton check = new JButton("Reverse");
 
-        ReverseButtonListener listener = new ReverseButtonListener(numValue, reverseValue);
-        check.addActionListener(listener);
+        check.addActionListener((ActionEvent e) -> {
+            try {
+                int number = Integer.parseInt(numValue.getText());
+                reverseValue.setText(String.valueOf(reverseNumber(number)));
+            } catch (NumberFormatException ex) {
+                reverseValue.setText("Invalid input");
+            }
+        });
 
         panel1.add(num);
         panel1.add(numValue);
@@ -38,29 +43,8 @@ public class lab02 {
         frame.setSize(400, 200);
         frame.setVisible(true);
     }
-}
 
-class ReverseButtonListener implements ActionListener {
-    private JTextField num;
-    private JTextField result;
-
-    public ReverseButtonListener(JTextField num, JTextField result) {
-        this.num = num;
-        this.result = result;
-    }
-
-    @Override
-    public void actionPerformed(ActionEvent e) {
-        try {
-            int number = Integer.parseInt(num.getText());
-            int reversedNumber = reverseNumber(number);
-            result.setText(String.valueOf(reversedNumber));
-        } catch (NumberFormatException ex) {
-            result.setText("Invalid input");
-        }
-    }
-
-    private int reverseNumber(int number) {
+    private static int reverseNumber(int number) {
         int reversed = 0;
         while (number != 0) {
             int digit = number % 10;
