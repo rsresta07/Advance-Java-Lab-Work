@@ -7,7 +7,6 @@ import javax.swing.JPanel;
 import javax.swing.JTextField;
 
 import java.awt.FlowLayout;
-import java.awt.event.ActionEvent;
 
 public class lab03 {
     public static void main(String[] args) {
@@ -19,7 +18,7 @@ public class lab03 {
         JButton check = new JButton("Check");
         JLabel result = new JLabel();
 
-        check.addActionListener((ActionEvent e) -> {
+        check.addActionListener(e -> {
             int number = Integer.parseInt(numValue.getText());
             result.setText(isArmstrong(number) ? "It is Armstrong" : "It is not Armstrong");
         });

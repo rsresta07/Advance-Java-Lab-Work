@@ -45,10 +45,10 @@ public class lab10 {
     }
 
     private static void addToPanel(JPanel panel, Component component, int x, int y, int bottomInset) {
-        GridBagConstraints constraints = new GridBagConstraints();
-        constraints.gridx = x;
-        constraints.gridy = y;
-        constraints.insets = new Insets(0, 0, bottomInset, 0);
-        panel.add(component, constraints);
+        GridBagConstraints constr = new GridBagConstraints();
+        constr.gridx = x;
+        constr.gridy = y;
+        constr.insets = new Insets(0, 0, bottomInset, 0);
+        panel.add(component, constr);
     }
 }

@@ -7,7 +7,6 @@ import javax.swing.JPanel;
 import javax.swing.JTextField;
 
 import java.awt.GridLayout;
-import java.awt.event.ActionEvent;
 
 public class lab02 {
     public static void main(String[] args) {
@@ -22,13 +21,9 @@ public class lab02 {
         reverseValue.setEditable(false);
         JButton check = new JButton("Reverse");
 
-        check.addActionListener((ActionEvent e) -> {
-            try {
-                int number = Integer.parseInt(numValue.getText());
-                reverseValue.setText(String.valueOf(reverseNumber(number)));
-            } catch (NumberFormatException ex) {
-                reverseValue.setText("Invalid input");
-            }
+        check.addActionListener(e -> {
+            int number = Integer.parseInt(numValue.getText());
+            reverseValue.setText(String.valueOf(reverseNumber(number)));
         });
 
         panel1.add(num);
@@ -47,8 +42,7 @@ public class lab02 {
     private static int reverseNumber(int number) {
         int reversed = 0;
         while (number != 0) {
-            int digit = number % 10;
-            reversed = reversed * 10 + digit;
+            reversed = reversed * 10 + number % 10;
             number /= 10;
         }
         return reversed;
