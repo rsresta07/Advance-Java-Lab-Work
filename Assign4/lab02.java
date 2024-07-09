@@ -30,6 +30,7 @@ public class lab02 {
         panel1.add(numValue);
         panel1.add(reverse);
         panel1.add(reverseValue);
+        
         mainPanel.add(panel1);
         mainPanel.add(check);
 
