@@ -14,7 +14,7 @@ public class lab05 {
         JPanel mainPanel = new JPanel(new GridLayout(0, 1));
         JPanel operationPanel = new JPanel(new GridLayout(3, 2));
 
-        JLabel label1 = new JLabel("Find the largest number:");
+        JLabel label1 = new JLabel("Find the largest number:", SwingConstants.CENTER);
         JTextField numValue1 = new JTextField(5);
         JTextField numValue2 = new JTextField(5);
         JButton check = new JButton("Check");
