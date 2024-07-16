@@ -69,6 +69,49 @@ public class StudentRegistration {
 
         cancelBtn.addActionListener(e -> System.exit(0));
 
+        gbc.gridx = 0;
+        gbc.gridy = 0;
+        gbc.anchor = GridBagConstraints.WEST;
+        mainPanel.add(new JLabel("Name:"), gbc);
+        gbc.gridx = 1;
+        mainPanel.add(nameField, gbc);
+
+        gbc.gridx = 0;
+        gbc.gridy = 1;
+        mainPanel.add(new JLabel("Address:"), gbc);
+        gbc.gridx = 1;
+        mainPanel.add(addressField, gbc);
+
+        gbc.gridx = 0;
+        gbc.gridy = 2;
+        mainPanel.add(new JLabel("Gender:"), gbc);
+        gbc.gridx = 1;
+        mainPanel.add(genderPanel, gbc);
+
+        gbc.gridx = 0;
+        gbc.gridy = 3;
+        mainPanel.add(new JLabel("Program:"), gbc);
+        gbc.gridx = 1;
+        mainPanel.add(programBox, gbc);
+
+        gbc.gridx = 0;
+        gbc.gridy = 4;
+        mainPanel.add(new JLabel("Phone:"), gbc);
+        gbc.gridx = 1;
+        mainPanel.add(phoneField, gbc);
+
+        gbc.gridx = 0;
+        gbc.gridy = 5;
+        mainPanel.add(new JLabel("Email:"), gbc);
+        gbc.gridx = 1;
+        mainPanel.add(emailField, gbc);
+
+        gbc.gridx = 0;
+        gbc.gridy = 6;
+        gbc.gridwidth = 2;
+        gbc.anchor = GridBagConstraints.CENTER;
+        mainPanel.add(btnPanel, gbc);
+
         frame.add(mainPanel);
         frame.pack();
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
