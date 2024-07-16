@@ -1,6 +1,6 @@
 // FIXME: the terminal says 'MySQL JDBC Driver not found.'
 
-package Assign5;
+// package Assign5;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
