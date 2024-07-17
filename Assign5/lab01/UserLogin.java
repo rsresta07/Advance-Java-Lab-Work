@@ -25,6 +25,7 @@ public class UserLogin extends JFrame {
 
     public UserLogin() {
         // JFrame frame = new JFrame();
+        setTitle("User Login");
         JPanel mainPanel = new JPanel(new GridBagLayout());
         GridBagConstraints constr = new GridBagConstraints();
         constr.insets = new Insets(5, 5, 5, 5);
