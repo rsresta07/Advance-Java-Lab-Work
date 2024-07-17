@@ -1,0 +1,79 @@
+import javax.swing.*;
+import java.awt.*;
+import java.awt.event.*;
+import java.sql.*;
+
+public class StudentRegistration extends JFrame {
+    private JTextField nameField;
+    private JComboBox<String> genderComboBox;
+    private JTextField birthdateField;
+    private JTextField phoneField;
+    private JTextField emailField;
+    private JTextField addressField;
+    private JButton registerButton;
+
+    public StudentRegistration() {
+        // GUI Components
+        nameField = new JTextField(20);
+        genderComboBox = new JComboBox<>(new String[] {"Male", "Female", "Other"});
+        birthdateField = new JTextField(10);
+        phoneField = new JTextField(10);
+        emailField = new JTextField(20);
+        addressField = new JTextField(50);
+        registerButton = new JButton("Register");
+
+        // Add components to JFrame
+        setLayout(new GridLayout(7, 2));
+        add(new JLabel("Name:"));
+        add(nameField);
+        add(new JLabel("Gender:"));
+        add(genderComboBox);
+        add(new JLabel("Birthdate (YYYY-MM-DD):"));
+        add(birthdateField);
+        add(new JLabel("Phone:"));
+        add(phoneField);
+        add(new JLabel("Email:"));
+        add(emailField);
+        add(new JLabel("Address:"));
+        add(addressField);
+        add(registerButton);
+
+        registerButton.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                registerStudent();
+            }
+        });
+
+        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        pack();
+        setVisible(true);
+    }
+
+    private void registerStudent() {
+        String name = nameField.getText();
+        String gender = (String) genderComboBox.getSelectedItem();
+        String birthdate = birthdateField.getText();
+        String phone = phoneField.getText();
+        String email = emailField.getText();
+        String address = addressField.getText();
+
+        try (Connection conn = ConnectionE.getConnection()) {
+            String sql = "INSERT INTO tbl_student (student_name, gender, birthdate, phone, email, address) VALUES (?, ?, ?, ?, ?, ?)";
+            PreparedStatement pstmt = conn.prepareStatement(sql);
+            pstmt.setString(1, name);
+            pstmt.setString(2, gender);
+            pstmt.setString(3, birthdate);
+            pstmt.setString(4, phone);
+            pstmt.setString(5, email);
+            pstmt.setString(6, address);
+            pstmt.executeUpdate();
+            JOptionPane.showMessageDialog(this, "Student registered successfully");
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        }
+    }
+
+    public static void main(String[] args) {
+        new StudentRegistration();
+    }
+}
