@@ -71,7 +71,7 @@ public class UserLogin extends JFrame {
     private void validateLogin() {
         String userName = userNameField.getText();
         String password = new String(passwordField.getPassword());
-        try (Connection conn = ConnectionE.getConnection()) {
+        try (Connection conn = JDBCConnection.getConnection()) {
             String sql = "SELECT * FROM tbl_users WHERE user_name =? AND password =?";
             PreparedStatement pstmt = conn.prepareStatement(sql);
             pstmt.setString(1, userName);
