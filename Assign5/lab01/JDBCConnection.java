@@ -1,4 +1,4 @@
-package lab01;
+package Lab01;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
