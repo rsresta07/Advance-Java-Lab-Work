@@ -18,11 +18,11 @@ public class lab02 {
             Connection conn = DriverManager.getConnection(jdbcUrl, username, password);
 
             // Create a statement
-            Statement statement = conn.createStatement();
+            Statement stmt = conn.createStatement();
 
             // Execute the SELECT query
             String sql = "SELECT * FROM products";
-            ResultSet resultSet = statement.executeQuery(sql);
+            ResultSet resultSet = stmt.executeQuery(sql);
 
             System.out.println("ID\t\tName\t\tPrice\t\tQuantity");
             // Iterate through the ResultSet and print the retrieved data
