@@ -1,4 +1,4 @@
-package Lab01;
+package Ques01;
 
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;

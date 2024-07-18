@@ -1,4 +1,4 @@
-package Lab01;
+package Ques01;
 
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
