@@ -26,28 +26,22 @@ public class StudentRegistration extends JFrame {
     private JComboBox<String> programBox;
 
     public StudentRegistration() {
-        // JFrame frame = new JFrame("Student Registration Form");
         JPanel mainPanel = new JPanel(new GridBagLayout());
         GridBagConstraints gbc = new GridBagConstraints();
         gbc.insets = new Insets(5, 5, 5, 5);
 
         nameField = new JTextField(20);
-        genderComboBox = new JComboBox<>(new String[] { "Male", "Female", "Others" });
+        genderComboBox = new JComboBox<>(new String[] { "Please Select One", "Male", "Female", "Others" });
         birthdateField = new JTextField(20);
         phoneField = new JTextField(20);
         emailField = new JTextField(20);
         addressField = new JTextField(20);
 
-        // JRadioButton maleBtn = new JRadioButton("male");
-        // JRadioButton femaleBtn = new JRadioButton("female");
-        // ButtonGroup genderGroup = new ButtonGroup();
-        // genderGroup.add(maleBtn);
-        // genderGroup.add(femaleBtn);
         JPanel genderPanel = new JPanel();
         genderPanel.add(genderComboBox);
 
-        String[] programs = { "BIM", "BCA", "BBM", "CSIT", "BBA", "BHM" };
-        programBox = new JComboBox<>(programs); // Instantiate here
+        String[] programs = { "Please Select One", "BIM", "BCA", "BBM", "CSIT", "BBA", "BHM" };
+        programBox = new JComboBox<>(programs);
         programBox.setPreferredSize(
                 new Dimension(nameField.getPreferredSize().width, programBox.getPreferredSize().height));
 
@@ -59,7 +53,16 @@ public class StudentRegistration extends JFrame {
         btnPanel.add(resetBtn);
         btnPanel.add(cancelBtn);
 
-        registerBtn.addActionListener(e -> registerStudent());
+        registerBtn.addActionListener(e -> {
+            if (nameField.getText().isEmpty() || genderComboBox.getSelectedIndex() == 0
+                    || birthdateField.getText().isEmpty() || phoneField.getText().isEmpty()
+                    || emailField.getText().isEmpty() || addressField.getText().isEmpty()
+                    || programBox.getSelectedIndex() == 0) {
+                JOptionPane.showMessageDialog(this, "All fields are required.");
+                return;
+            }
+            registerStudent();
+        });
 
         resetBtn.addActionListener(e -> resetForm());
 
@@ -128,9 +131,10 @@ public class StudentRegistration extends JFrame {
         String phone = phoneField.getText();
         String email = emailField.getText();
         String address = addressField.getText();
+        String program = (String) programBox.getSelectedItem();
 
-        try (Connection conn = ConnectionE.getConnection()) {
-            String sql = "INSERT INTO tbl_student (student_name, gender, birthdate, phone, email, address) VALUES (?, ?, ?, ?, ?, ?)";
+        try (Connection conn = JDBCConnection.getConnection()) {
+            String sql = "INSERT INTO tbl_student (student_name, gender, birthdate, phone, email, address, program) VALUES (?, ?, ?, ?, ?, ?, ?)";
             PreparedStatement pstmt = conn.prepareStatement(sql);
             pstmt.setString(1, name);
             pstmt.setString(2, gender);
@@ -138,6 +142,7 @@ public class StudentRegistration extends JFrame {
             pstmt.setString(4, phone);
             pstmt.setString(5, email);
             pstmt.setString(6, address);
+            pstmt.setString(7, program);
             pstmt.executeUpdate();
             JOptionPane.showMessageDialog(this, "Student registered successfully");
         } catch (SQLException ex) {
@@ -150,13 +155,12 @@ public class StudentRegistration extends JFrame {
     }
 
     private void resetForm() {
-        programBox.setSelectedIndex(0);
         nameField.setText(null);
-        genderComboBox.setSelectedIndex(-1); // Clear selection
+        genderComboBox.setSelectedIndex(0); // Clear selection
         birthdateField.setText(null);
         phoneField.setText(null);
         emailField.setText(null);
         addressField.setText(null);
+        programBox.setSelectedIndex(0); // Clear selection
     }
-
 }
