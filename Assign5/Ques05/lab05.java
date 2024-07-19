@@ -1,3 +1,7 @@
+/* 
+ * This lab05 uses the same database as the lab03 database
+ */
+
 package Ques05;
 
 import java.sql.Connection;
@@ -8,19 +12,16 @@ import java.sql.Statement;
 
 public class lab05 {
 
-    // Database credentials
-    static final String JDBC_DRIVER = "com.mysql.cj.jdbc.Driver";
-    static final String DB_URL = "jdbc:mysql://localhost:3306/employees_db";
-    static final String USER = "root";
-    static final String PASS = "";
-
+    
     public static void main(String[] args) {
         try {
-            // Register JDBC driver
-            Class.forName(JDBC_DRIVER);
+            // Database credentials
+            String jdbcUrl = "jdbc:mysql://localhost:3306/employees_db";
+            String user = "root";
+            String pass = "";
 
             // Open a connection
-            Connection conn = DriverManager.getConnection(DB_URL, USER, PASS);
+            Connection conn = DriverManager.getConnection(jdbcUrl, user, pass);
 
             // Create a statement with scrollable ResultSet
             Statement stmt = conn.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
