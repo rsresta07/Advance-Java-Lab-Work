@@ -83,7 +83,7 @@ public class StudentRegistration extends JFrame {
 
         gbc.gridx = 0;
         gbc.gridy = 2;
-        mainPanel.add(new JLabel("DOB:"), gbc);
+        mainPanel.add(new JLabel("DOB (YYYY-MM-DD):"), gbc);
         gbc.gridx = 1;
         mainPanel.add(birthdateField, gbc);
 
@@ -145,6 +145,7 @@ public class StudentRegistration extends JFrame {
             pstmt.setString(7, program);
             pstmt.executeUpdate();
             JOptionPane.showMessageDialog(this, "Student registered successfully");
+            resetForm();
         } catch (SQLException ex) {
             ex.printStackTrace();
         }
