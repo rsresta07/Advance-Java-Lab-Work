@@ -62,6 +62,23 @@ public class lab03 {
             pstmt.setInt(1, 3);
             pstmt.executeUpdate();
 
+            // Execute a SELECT query
+            Statement stmt = conn.createStatement();
+            String selectSQL = "SELECT id, name, position FROM employees";
+            ResultSet rs = stmt.executeQuery(selectSQL);
+
+            // Extract data from result set
+            while (rs.next()) {
+                int id = rs.getInt("id");
+                String name = rs.getString("name");
+                String position = rs.getString("position");
+
+                System.out.print("ID: " + id);
+                System.out.print(", Name: " + name);
+                System.out.println(", Position: " + position);
+            }
+
+
         } catch (SQLException e) {
             e.printStackTrace();
         }
