@@ -62,8 +62,6 @@ public class lab03 {
             pstmt.setInt(1, 3);
             pstmt.executeUpdate();
 
-            System.out.println("Records inserted, updated, and deleted successfully.");
-
         } catch (SQLException e) {
             e.printStackTrace();
         }
