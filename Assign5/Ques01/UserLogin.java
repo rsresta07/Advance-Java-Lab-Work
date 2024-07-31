@@ -1,8 +1,6 @@
 package Ques01;
 
-import java.awt.GridBagConstraints;
-import java.awt.GridBagLayout;
-import java.awt.Insets;
+import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.sql.Connection;
@@ -24,38 +22,23 @@ public class UserLogin extends JFrame {
     private JButton loginButton;
 
     public UserLogin() {
-        // JFrame frame = new JFrame();
         setTitle("User Login");
-        JPanel mainPanel = new JPanel(new GridBagLayout());
-        GridBagConstraints constr = new GridBagConstraints();
-        constr.insets = new Insets(5, 5, 5, 5);
+        JPanel mainPanel = new JPanel(new GridLayout(3, 2));
 
         userNameField = new JTextField(10);
         passwordField = new JPasswordField(10);
         loginButton = new JButton("Login");
 
-        constr.gridx = 0;
-        constr.gridy = 0;
-        constr.anchor = GridBagConstraints.WEST;
-        mainPanel.add(new JLabel("Username:"), constr);
-        constr.gridx = 1;
-        mainPanel.add(userNameField, constr);
-
-        constr.gridx = 0;
-        constr.gridy = 1;
-        mainPanel.add(new JLabel("Password:"), constr);
-        constr.gridx = 1;
-        mainPanel.add(passwordField, constr);
-
-        constr.gridx = 0;
-        constr.gridy = 2;
-        constr.gridwidth = 2;
-        constr.anchor = GridBagConstraints.CENTER;
-        mainPanel.add(loginButton, constr);
+        mainPanel.add(new JLabel("Username:"));
+        mainPanel.add(userNameField);
+        mainPanel.add(new JLabel("Password:"));
+        mainPanel.add(passwordField);
+        mainPanel.add(new JLabel()); // Placeholder to center the login button
+        mainPanel.add(loginButton);
 
         add(mainPanel);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        setSize(250, 200);
+        setSize(350, 150);
         setVisible(true);
         setLocationRelativeTo(null);
 

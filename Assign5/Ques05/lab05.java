@@ -62,7 +62,7 @@ public class lab05 {
                 String position = rs.getString("position");
                 Double salary = rs.getDouble("salary");
 
-                System.out.println(id + "\t\t" + name + "\t\t" + position + "\t\t" + salary);
+                System.out.println(id + "\t\t" + name + "\t\t" + position + "\t" + salary);
             } else {
                 System.out.println("Row " + rowNumber + " does not exist.");
             }
