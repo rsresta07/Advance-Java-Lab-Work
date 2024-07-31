@@ -1,9 +1,7 @@
 package Ques01;
 
 import java.awt.Dimension;
-import java.awt.GridBagConstraints;
-import java.awt.GridBagLayout;
-import java.awt.Insets;
+import java.awt.GridLayout;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
@@ -26,9 +24,7 @@ public class StudentRegistration extends JFrame {
     private JComboBox<String> programBox;
 
     public StudentRegistration() {
-        JPanel mainPanel = new JPanel(new GridBagLayout());
-        GridBagConstraints gbc = new GridBagConstraints();
-        gbc.insets = new Insets(5, 5, 5, 5);
+        JPanel mainPanel = new JPanel(new GridLayout(8, 2, 5, 5));
 
         nameField = new JTextField(20);
         genderComboBox = new JComboBox<>(new String[] { "Please Select One", "Male", "Female", "Others" });
@@ -37,9 +33,6 @@ public class StudentRegistration extends JFrame {
         emailField = new JTextField(20);
         addressField = new JTextField(20);
 
-        JPanel genderPanel = new JPanel();
-        genderPanel.add(genderComboBox);
-
         String[] programs = { "Please Select One", "BIM", "BCA", "BBM", "CSIT", "BBA", "BHM" };
         programBox = new JComboBox<>(programs);
         programBox.setPreferredSize(
@@ -47,11 +40,7 @@ public class StudentRegistration extends JFrame {
 
         JButton registerBtn = new JButton("Add");
         JButton resetBtn = new JButton("Reset");
-        JButton cancelBtn = new JButton("Cancel");
-        JPanel btnPanel = new JPanel();
-        btnPanel.add(registerBtn);
-        btnPanel.add(resetBtn);
-        btnPanel.add(cancelBtn);
+        // JButton cancelBtn = new JButton("Cancel");
 
         registerBtn.addActionListener(e -> {
             if (nameField.getText().isEmpty() || genderComboBox.getSelectedIndex() == 0
@@ -66,56 +55,32 @@ public class StudentRegistration extends JFrame {
 
         resetBtn.addActionListener(e -> resetForm());
 
-        cancelBtn.addActionListener(e -> System.exit(0));
+        // cancelBtn.addActionListener(e -> System.exit(0));
 
-        gbc.gridx = 0;
-        gbc.gridy = 0;
-        gbc.anchor = GridBagConstraints.WEST;
-        mainPanel.add(new JLabel("Name:"), gbc);
-        gbc.gridx = 1;
-        mainPanel.add(nameField, gbc);
+        mainPanel.add(new JLabel("Name:"));
+        mainPanel.add(nameField);
 
-        gbc.gridx = 0;
-        gbc.gridy = 1;
-        mainPanel.add(new JLabel("Gender:"), gbc);
-        gbc.gridx = 1;
-        mainPanel.add(genderPanel, gbc);
+        mainPanel.add(new JLabel("Gender:"));
+        mainPanel.add(genderComboBox);
 
-        gbc.gridx = 0;
-        gbc.gridy = 2;
-        mainPanel.add(new JLabel("DOB (YYYY-MM-DD):"), gbc);
-        gbc.gridx = 1;
-        mainPanel.add(birthdateField, gbc);
+        mainPanel.add(new JLabel("DOB (YYYY-MM-DD):"));
+        mainPanel.add(birthdateField);
 
-        gbc.gridx = 0;
-        gbc.gridy = 3;
-        mainPanel.add(new JLabel("Phone:"), gbc);
-        gbc.gridx = 1;
-        mainPanel.add(phoneField, gbc);
+        mainPanel.add(new JLabel("Phone:"));
+        mainPanel.add(phoneField);
 
-        gbc.gridx = 0;
-        gbc.gridy = 4;
-        mainPanel.add(new JLabel("Email:"), gbc);
-        gbc.gridx = 1;
-        mainPanel.add(emailField, gbc);
+        mainPanel.add(new JLabel("Email:"));
+        mainPanel.add(emailField);
 
-        gbc.gridx = 0;
-        gbc.gridy = 5;
-        mainPanel.add(new JLabel("Address:"), gbc);
-        gbc.gridx = 1;
-        mainPanel.add(addressField, gbc);
+        mainPanel.add(new JLabel("Address:"));
+        mainPanel.add(addressField);
 
-        gbc.gridx = 0;
-        gbc.gridy = 6;
-        mainPanel.add(new JLabel("Program:"), gbc);
-        gbc.gridx = 1;
-        mainPanel.add(programBox, gbc);
+        mainPanel.add(new JLabel("Program:"));
+        mainPanel.add(programBox);
 
-        gbc.gridx = 0;
-        gbc.gridy = 7;
-        gbc.gridwidth = 2;
-        gbc.anchor = GridBagConstraints.CENTER;
-        mainPanel.add(btnPanel, gbc);
+        mainPanel.add(registerBtn);
+        mainPanel.add(resetBtn);
+        // mainPanel.add(cancelBtn);
 
         add(mainPanel);
         pack();
@@ -157,11 +122,11 @@ public class StudentRegistration extends JFrame {
 
     private void resetForm() {
         nameField.setText(null);
-        genderComboBox.setSelectedIndex(0); // Clear selection
+        genderComboBox.setSelectedIndex(0);
         birthdateField.setText(null);
         phoneField.setText(null);
         emailField.setText(null);
         addressField.setText(null);
-        programBox.setSelectedIndex(0); // Clear selection
+        programBox.setSelectedIndex(0);
     }
 }
