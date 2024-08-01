@@ -87,7 +87,7 @@ public class StudentManager extends JFrame {
 
     private void editStudent() {
         int selectedRow = studentTable.getSelectedRow();
-        if (selectedRow != -1) {
+        // if (selectedRow != -1) {
             // Adjust based on your table columns
             int studentId = (int) studentTable.getValueAt(selectedRow, 0);
             String name = (String) studentTable.getValueAt(selectedRow, 1);
@@ -137,12 +137,12 @@ public class StudentManager extends JFrame {
                 String updatedProgram = programField.getText();
 
                 java.sql.Date updatedBirthdate = null;
-                try {
+                // try {
                     updatedBirthdate = java.sql.Date.valueOf(updatedBirthdateStr); // Convert String to Date
-                } catch (IllegalArgumentException ex) {
-                    JOptionPane.showMessageDialog(this, "Invalid date format. Use yyyy-MM-dd.");
-                    return;
-                }
+                // } catch (IllegalArgumentException ex) {
+                //     JOptionPane.showMessageDialog(this, "Invalid date format. Use yyyy-MM-dd.");
+                //     return;
+                // }
 
                 // Update the student information in the database
                 try (Connection conn = JDBCConnection.getConnection()) {
@@ -157,21 +157,21 @@ public class StudentManager extends JFrame {
                     pstmt.setString(7, updatedProgram);
                     pstmt.setInt(8, studentId);
                     pstmt.executeUpdate();
-                    JOptionPane.showMessageDialog(this, "Student updated successfully");
+                    JOptionPane.showMessageDialog(this, "Updated successfully");
                     loadStudents(); // Refresh table data
                 } catch (SQLException ex) {
                     ex.printStackTrace();
-                    JOptionPane.showMessageDialog(this, "Error updating student");
+                    JOptionPane.showMessageDialog(this, "Error updating.");
                 }
             }
-        } else {
-            JOptionPane.showMessageDialog(this, "Please select a student to edit");
-        }
+        // } else {
+        //     JOptionPane.showMessageDialog(this, "Select a student to edit");
+        // }
     }
 
     private void deleteStudent() {
         int selectedRow = studentTable.getSelectedRow();
-        if (selectedRow != -1) {
+        // if (selectedRow != -1) {
             int studentId = (int) studentTable.getValueAt(selectedRow, 0);
             try (Connection conn = JDBCConnection.getConnection()) {
                 String sql = "DELETE FROM tbl_student WHERE student_id = ?";
@@ -183,9 +183,9 @@ public class StudentManager extends JFrame {
             } catch (SQLException ex) {
                 ex.printStackTrace();
             }
-        } else {
-            JOptionPane.showMessageDialog(this, "Please select a student to delete");
-        }
+        // } else {
+        //     JOptionPane.showMessageDialog(this, "Select a student to delete");
+        // }
     }
 
     public static void main(String[] args) {
